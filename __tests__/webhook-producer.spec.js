@@ -1,7 +1,7 @@
 const micro = require('micro');
 const listen = require('test-listen');
 const fetch = require('node-fetch');
-const app = require('../strava-producer');
+const app = require('../webhook-producer');
 const Kafka = require('node-rdkafka');
 
 const { mockProduce } = Kafka;
@@ -22,7 +22,7 @@ describe('Strava Producer', () => {
   const testService = async (method, body) => {
     const service = micro(app);
     const url = await listen(service);
-    const response = await fetch(url, {
+    const response = await fetch(url + '/strava', {
       method,
       headers: {
         'Content-type': 'application/json'

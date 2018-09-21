@@ -6,7 +6,7 @@ const app = express();
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
 
-// Send messages to the rest-producer who will forward them to Kafka
+// Send messages to the webhook-producer who will forward them to Kafka
 const sendMessage = (topic, message) => {
   return fetch(`http://localhost:3001/${topic}`, {
     method: 'POST',

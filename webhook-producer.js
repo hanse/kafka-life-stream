@@ -8,16 +8,20 @@ const producer = new Kafka.Producer({
   dr_cb: true
 });
 
-const TOPIC = 'strava';
-
 const handler = async (req, res) => {
   if (req.method !== 'POST') {
     throw createError(405, 'Method not supported');
   }
 
+  const topic = req.url.replace(/\/$/, '').slice(1);
+
+  if (!topic) {
+    throw createError(404, 'A topic must be provided as part of the URL.');
+  }
+
   const message = await buffer(req);
 
-  producer.produce(TOPIC, null, message, null, Date.now());
+  producer.produce(topic, null, message, null, Date.now());
 
   res.statusCode = 200;
   res.end();
