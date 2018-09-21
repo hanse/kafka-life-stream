@@ -3,8 +3,10 @@ const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 
 const app = express();
+app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
 
+// Send messages to the rest-producer who will forward them to Kafka
 const sendMessage = (topic, message) => {
   return fetch(`http://localhost:3001/${topic}`, {
     method: 'POST',
@@ -43,4 +45,6 @@ app.use((err, req, res, next /*eslint-disable-line*/) => {
   });
 });
 
-app.listen(3000, () => console.log('API listening on 3000'));
+app.listen(app.get('port'), () =>
+  console.log(`API listening on ${app.get('port')}`)
+);
