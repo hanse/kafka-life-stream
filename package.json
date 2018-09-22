@@ -6,7 +6,9 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "btoa": "^1.2.1",
     "express": "^4.16.3",
+    "isomorphic-fetch": "^2.2.1",
     "meow": "^5.0.0",
     "micro": "^9.3.3",
     "node-fetch": "^2.2.0",
@@ -37,7 +39,8 @@
     "env": {
       "node": true,
       "es6": true,
-      "jest": true
+      "jest": true,
+      "browser": true
     },
     "globals": {
       "__DEV__": true
