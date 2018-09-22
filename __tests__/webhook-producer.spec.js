@@ -1,6 +1,7 @@
+require('isomorphic-fetch');
+
 const micro = require('micro');
 const listen = require('test-listen');
-const fetch = require('node-fetch');
 const app = require('../webhook-producer');
 const Kafka = require('node-rdkafka');
 
