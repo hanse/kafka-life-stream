@@ -45,16 +45,6 @@ describe('Strava Producer', () => {
     expect(await response.text()).toEqual('');
   });
 
-  it('should return 405 for non-POST requests and do nothing', async () => {
-    console.error = () => {};
-    for (const method of ['GET', 'PUT', 'PATCH', 'DELETE']) {
-      const response = await testService(method);
-      expect(response.status).toEqual(405);
-    }
-
-    expect(mockProduce).not.toHaveBeenCalled();
-  });
-
   it('should forward messages to Kafka', async () => {
     await testService('POST', WEBHOOK_EVENT);
 

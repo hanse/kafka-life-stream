@@ -14,7 +14,16 @@ Currently only supports [Strava](https://strava.com) Activities, but I imagine a
 
 ```bash
 brew install kafka
+brew services start zookeeper
 brew services start kafka
+```
+
+```bash
+# node-rdkafka needs this (see: https://github.com/Blizzard/node-rdkafka#mac-os-high-sierra)
+export CPPFLAGS=-I/usr/local/opt/openssl/include
+export LDFLAGS=-L/usr/local/opt/openssl/lib
+
+yarn
 ```
 
 ### Read messages from the topic `topic`
