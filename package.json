@@ -10,14 +10,14 @@
     "meow": "^5.0.0",
     "micro": "^9.3.3",
     "node-rdkafka": "^2.4.1",
-    "qs": "^6.5.2",
-    "test-listen": "^1.1.0"
+    "qs": "^6.5.2"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "eslint": "^5.6.0",
     "jest": "^23.6.0",
-    "micro-dev": "^3.0.0"
+    "micro-dev": "^3.0.0",
+    "test-listen": "^1.1.0"
   },
   "prettier": {
     "singleQuote": true,
