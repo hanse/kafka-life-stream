@@ -1,8 +1,8 @@
 const micro = require('micro');
 const Kafka = require('node-rdkafka');
 const listen = require('test-listen');
-const app = require('../strava-webhook-producer');
-const fetch = require('../node-fetch-json');
+const app = require('../');
+const fetch = require('../../node-fetch-json');
 
 const { mockProduce } = Kafka;
 

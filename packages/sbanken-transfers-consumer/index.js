@@ -1,4 +1,4 @@
-const { getAccessToken, getAccounts } = require('./sbanken-api-client');
+const { getAccessToken, getAccounts } = require('../sbanken-api-client');
 
 getAccessToken()
   .then(data => getAccounts(data.access_token))
