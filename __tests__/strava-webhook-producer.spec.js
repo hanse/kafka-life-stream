@@ -1,9 +1,8 @@
-require('isomorphic-fetch');
-
 const micro = require('micro');
-const listen = require('test-listen');
-const app = require('../webhook-producer');
 const Kafka = require('node-rdkafka');
+const listen = require('test-listen');
+const app = require('../strava-webhook-producer');
+const fetch = require('../node-fetch-json');
 
 const { mockProduce } = Kafka;
 
@@ -43,7 +42,7 @@ describe('Strava Producer', () => {
   it('should respond with empty 200 for webhook events', async () => {
     const response = await testService('POST', WEBHOOK_EVENT);
     expect(response.status).toEqual(200);
-    expect(await response.text()).toEqual('');
+    expect(await response.textString).toEqual('');
   });
 
   it('should forward messages to Kafka', async () => {
