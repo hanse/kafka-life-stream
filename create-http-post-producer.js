@@ -15,7 +15,7 @@ function createHttpPostProducer(nonPostHandler) {
         throw createError(405, 'Method not supported');
       }
 
-      await nonPostHandler(req);
+      return nonPostHandler(req);
     }
 
     const topic = req.url.replace(/\/$/, '').slice(1);
