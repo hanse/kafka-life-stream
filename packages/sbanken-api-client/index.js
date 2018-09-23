@@ -1,5 +1,6 @@
-const fetch = require('../node-fetch-json');
 const btoa = require('btoa');
+const qs = require('qs');
+const fetch = require('../node-fetch-json');
 
 const config = {
   clientId: process.env.SBANKEN_APPLICATION_CLIENT_ID,
@@ -38,7 +39,7 @@ function getAccounts(accessToken, customerId) {
       Authorization: `Bearer ${accessToken}`,
       customerId
     }
-  }).then(response => response.jsonData);
+  }).then(response => response.jsonData.items);
 }
 
 function getCustomer(accessToken, customerId) {
@@ -48,11 +49,55 @@ function getCustomer(accessToken, customerId) {
       Authorization: `Bearer ${accessToken}`,
       customerId
     }
+  }).then(response => response.jsonData.item);
+}
+
+function getTransactions(accessToken, customerId, accountId, query) {
+  const queryString = query ? `?${qs.stringify(query)}` : '';
+  return fetch(
+    `https://api.sbanken.no/bank/api/v1/Transactions/${accountId}${queryString}`,
+    {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+        customerId
+      }
+    }
+  ).then(response => response.jsonData);
+}
+
+function transferBetweenAccounts(accessToken, customerId, transfer) {
+  const { fromAccountId, toAccountId, message, amount } = transfer;
+  if (amount < 1 || amount > 100000000000000000) {
+    throw new Error(
+      `The amount ${amount} is not inside the valid range of 1...100000000000000000`
+    );
+  }
+
+  if (message && message.length > 30) {
+    throw new Error('The message can not be longer than 30 chars');
+  }
+
+  return fetch(`https://api.sbanken.no/bank/api/v1/Transfers`, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json-patch+json',
+      Authorization: `Bearer ${accessToken}`,
+      customerId
+    },
+    body: JSON.stringify({
+      fromAccountId,
+      toAccountId,
+      message,
+      amount
+    })
   }).then(response => response.jsonData);
 }
 
 module.exports = {
   getAccessToken,
   getAccounts,
-  getCustomer
+  getCustomer,
+  getTransactions,
+  transferBetweenAccounts
 };
