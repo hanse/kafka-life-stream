@@ -1,13 +1,14 @@
-const { getAccessToken, getAccounts } = require('../sbanken-api-client');
+const {
+  getAccessToken,
+  getAccounts,
+  getCustomer
+} = require('../sbanken-api-client');
 
-getAccessToken()
-  .then(data => getAccounts(data.access_token))
-  .then(accounts => console.log(accounts))
-  .catch(error => {
-    if (error.response) {
-      console.error(error.response.status);
-      console.error(error.response.jsonData);
-    } else {
-      console.error(error.message);
-    }
-  });
+async function exploreApi() {
+  const { access_token: accessToken } = await getAccessToken();
+
+  console.log(await getAccounts(accessToken, process.env.SBANKEN_USER_ID));
+  console.log(await getCustomer(accessToken, process.env.SBANKEN_USER_ID));
+}
+
+exploreApi();

@@ -31,18 +31,28 @@ function getAccessToken() {
   }).then(response => response.jsonData);
 }
 
-function getAccounts(accessToken, accountId) {
-  validateConfig();
-
-  return fetch(`https://api.sbanken.no/bank/api/v1/accounts/${accountId}`, {
+function getAccounts(accessToken, customerId) {
+  return fetch(`https://api.sbanken.no/bank/api/v1/Accounts`, {
     headers: {
       Accept: 'application/json',
-      Authorization: 'Bearer ' + accessToken
+      Authorization: `Bearer ${accessToken}`,
+      customerId
+    }
+  }).then(response => response.jsonData);
+}
+
+function getCustomer(accessToken, customerId) {
+  return fetch(`https://api.sbanken.no/customers/api/v1/Customers`, {
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+      customerId
     }
   }).then(response => response.jsonData);
 }
 
 module.exports = {
   getAccessToken,
-  getAccounts
+  getAccounts,
+  getCustomer
 };
