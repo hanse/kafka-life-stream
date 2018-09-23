@@ -79,6 +79,7 @@ function transferBetweenAccounts(accessToken, customerId, transfer) {
   }
 
   return fetch(`https://api.sbanken.no/bank/api/v1/Transfers`, {
+    method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json-patch+json',
