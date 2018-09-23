@@ -1,29 +1,63 @@
 const {
   getAccessToken,
   getAccounts,
-  getCustomer,
-  getTransactions
+  transferBetweenAccounts
 } = require('../sbanken-api-client');
+const { getActivity } = require('../strava-api-client');
+const createConsumer = require('../create-consumer');
 
-async function exploreApi() {
+const TARGET_ELAPSED_MINUTES = 20;
+
+async function transferFromCheckingsToSavings(amount) {
   const customerId = process.env.SBANKEN_USER_ID;
   const { access_token: accessToken } = await getAccessToken();
-
   const accounts = await getAccounts(accessToken, customerId);
-  const customer = await getCustomer(accessToken, customerId);
 
-  const transactions = [];
-  for (const account of accounts) {
-    transactions.push(
-      await getTransactions(accessToken, customerId, account.accountId)
+  const checkingsAccount = accounts.find(
+    account => account.accountType === 'Standard account'
+  );
+
+  const savingsAccount = accounts.find(
+    account => account.accountType === 'High interest account'
+  );
+
+  if (!checkingsAccount || !savingsAccount) {
+    throw new Error(
+      'You need both a savings account and a checkings account to do this.'
     );
   }
 
-  console.log({
-    customer,
-    accounts,
-    transactions
+  return transferBetweenAccounts(accessToken, customerId, {
+    fromAccountId: checkingsAccount.accountId,
+    toAccountId: savingsAccount.accountId,
+    amount,
+    message: 'Strava Initiated Payment'
   });
 }
 
-exploreApi();
+// You probably don't want to let this consumer
+// read from the beginning when you start it hahah
+const start = createConsumer(['strava'], async message => {
+  const event = JSON.parse(message.value.toString());
+  if (event.aspect_type !== 'create') {
+    return;
+  }
+
+  const activityId = event.object_id;
+  try {
+    const activity = await getActivity(
+      process.env.STRAVA_ACCESS_TOKEN,
+      activityId
+    );
+    const { elapsed_time: elapsed } = activity;
+
+    const minutes = Math.floor(elapsed / 60);
+    if (minutes > TARGET_ELAPSED_MINUTES) {
+      await transferFromCheckingsToSavings(minutes - TARGET_ELAPSED_MINUTES);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+start();
