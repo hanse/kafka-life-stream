@@ -50,6 +50,18 @@ After the registration is finished you should start receving events whenever thi
 
 Start the console consumer (`node packages/console-consumer strava`) to see the messages in this topic.
 
+## Sbanken Transfers Consumer
+
+The Sbanken Transfers Consumer reads messages from the `strava` topic and does something cool whenever a new Strava activity is created.
+
+```bash
+node packages/strava-transfers-consumer
+```
+
+The cool things it does is to move an amount of money equal do the difference between the elapsed time and the configured target time from a **checking** account to a **savings** account utilizing [Sbanken Open Banking APIs](https://sbanken.no/bruke/utviklerportalen/).
+
+E.g. given a configured target of 20 minutes, **10 NOK** will be transferred if I run for 30 minutes. How useful 🍾.
+
 ## Cookbook
 
 ### Install locally on macOS
