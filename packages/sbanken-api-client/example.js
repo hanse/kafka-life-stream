@@ -19,11 +19,17 @@ async function exploreApi() {
     );
   }
 
-  console.log({
-    customer,
-    accounts,
-    transactions
-  });
+  console.log(
+    JSON.stringify(
+      {
+        customer,
+        accounts,
+        transactions
+      },
+      null,
+      2
+    )
+  );
 }
 
 exploreApi();
