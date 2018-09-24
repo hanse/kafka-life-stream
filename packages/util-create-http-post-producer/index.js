@@ -3,13 +3,17 @@ const { buffer, createError } = micro;
 
 const Kafka = require('node-rdkafka');
 
-function createHttpPostProducer(nonPostHandler) {
+function createHttpPostProducer(nonPostHandler, isValidRequestOrigin) {
   const producer = new Kafka.Producer({
     'metadata.broker.list': 'localhost:9092',
     dr_cb: true
   });
 
   const handler = async (req, res) => {
+    if (!isValidRequestOrigin(req)) {
+      throw createError(404, 'Nothing here');
+    }
+
     if (req.method !== 'POST') {
       if (nonPostHandler == null) {
         throw createError(405, 'Method not supported');

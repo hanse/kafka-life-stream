@@ -19,13 +19,15 @@ const WEBHOOK_EVENT = JSON.stringify({
 });
 
 describe('Strava Producer', () => {
+  process.env.STRAVA_WHITELISTED_IPS = ['1'];
   const testService = async (method, body) => {
     const service = micro(app);
     const url = await listen(service);
     const response = await fetch(url + '/strava', {
       method,
       headers: {
-        'Content-type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Forwarded-For': '1'
       },
       body
     });
