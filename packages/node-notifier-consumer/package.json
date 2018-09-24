@@ -1,0 +1,7 @@
+{
+  "name": "@hanse/node-notifier-consumer",
+  "version": "0.0.1",
+  "dependencies": {
+    "node-notifier": "^5.2.1"
+  }
+}
