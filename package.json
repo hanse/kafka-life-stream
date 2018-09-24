@@ -1,5 +1,5 @@
 {
-  "name": "hanse-kafka-playground",
+  "name": "@hanse/kafka-playground",
   "license": "NO",
   "version": "0.0.1",
   "private": true,
@@ -7,6 +7,9 @@
     "test": "jest",
     "lint": "eslint . --ignore-path .gitignore"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
     "btoa": "1.2.1",
     "isomorphic-fetch": "2.2.1",

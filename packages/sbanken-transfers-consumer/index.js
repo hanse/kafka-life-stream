@@ -2,9 +2,9 @@ const {
   getAccessToken,
   getAccounts,
   transferBetweenAccounts
-} = require('../sbanken-api-client');
-const { getActivity } = require('../strava-api-client');
-const createConsumer = require('../create-consumer');
+} = require('@hanse/sbanken-api-client');
+const { getActivity } = require('@hanse/strava-api-client');
+const createConsumer = require('@hanse/create-consumer');
 
 const TARGET_ELAPSED_MINUTES = 20;
 
