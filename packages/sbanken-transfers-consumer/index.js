@@ -4,7 +4,7 @@ const {
   transferBetweenAccounts
 } = require('@hanse/sbanken-api-client');
 const { getActivity } = require('@hanse/strava-api-client');
-const createConsumer = require('@hanse/create-consumer');
+const createConsumer = require('@hanse/util-create-consumer');
 
 const TARGET_ELAPSED_MINUTES = 20;
 

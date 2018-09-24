@@ -1,8 +1,8 @@
 const micro = require('micro');
 const Kafka = require('node-rdkafka');
 const listen = require('test-listen');
+const fetch = require('@hanse/util-fetch-json');
 const app = require('../');
-const fetch = require('../../node-fetch-json');
 
 const { mockProduce } = Kafka;
 

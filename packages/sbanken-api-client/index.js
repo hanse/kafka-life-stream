@@ -1,6 +1,6 @@
 const btoa = require('btoa');
 const qs = require('qs');
-const fetch = require('@hanse/node-fetch-json');
+const fetch = require('@hanse/util-fetch-json');
 
 const config = {
   clientId: process.env.SBANKEN_APPLICATION_CLIENT_ID,

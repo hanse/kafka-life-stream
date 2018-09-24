@@ -12,6 +12,7 @@ function createConsumer(topics, onMessage) {
   return () => {
     consumer
       .on('ready', () => {
+        console.log('Consumer is ready');
         consumer.subscribe(topics);
         consumer.consume();
       })

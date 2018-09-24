@@ -1,4 +1,4 @@
-const fetch = require('@hanse/node-fetch-json');
+const fetch = require('@hanse/util-fetch-json');
 const API_URL = 'https://www.strava.com/api/v3';
 
 function getActivity(accessToken, activityId) {

@@ -1,5 +1,5 @@
 const meow = require('meow');
-const createConsumer = require('@hanse/create-consumer');
+const createConsumer = require('@hanse/util-create-consumer');
 
 const cli = meow('console-consumer topic1,topic2 [--debug]');
 
