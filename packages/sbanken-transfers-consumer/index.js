@@ -5,6 +5,7 @@ const {
 } = require('@hanse/sbanken-api-client');
 const { getActivity } = require('@hanse/strava-api-client');
 const createConsumer = require('@hanse/util-create-consumer');
+const logger = require('@hanse/util-logger');
 
 const TARGET_ELAPSED_MINUTES = 20;
 
@@ -54,16 +55,16 @@ const start = createConsumer(['strava'], async message => {
     const minutes = Math.floor(elapsed / 60);
     if (minutes > TARGET_ELAPSED_MINUTES) {
       const amount = minutes - TARGET_ELAPSED_MINUTES;
-      console.log(
+      logger.info(
         `Attempting to transfer ${amount} NOK from Checking to Savings.`
       );
       await transferFromCheckingsToSavings(amount);
-      console.log(
+      logger.info(
         `Successfully transferred ${amount} NOK from Checking to Savings.`
       );
     }
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 });
 

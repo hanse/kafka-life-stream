@@ -1,4 +1,5 @@
 const micro = require('micro');
+const logger = require('@hanse/util-logger');
 const { buffer, createError } = micro;
 
 const Kafka = require('node-rdkafka');
@@ -31,12 +32,12 @@ function createHttpPostProducer(nonPostHandler, isValidRequestOrigin) {
     const message = await buffer(req);
 
     const origin = req.headers['x-forwarded-for'] || req.headers.host;
-    console.log(`Received event from ${origin}: ${message.toString()}`);
+    logger.info(`Received event from ${origin}: ${message.toString()}`);
 
     try {
       producer.produce(topic, null, message, null, Date.now());
     } catch (error) {
-      console.log('Failed to forward message to Kafka.');
+      logger.error('Failed to forward message to Kafka.');
     }
 
     res.statusCode = 200;
@@ -47,12 +48,12 @@ function createHttpPostProducer(nonPostHandler, isValidRequestOrigin) {
     handler,
     start() {
       producer.on('ready', () => {
-        console.log('Producer is ready');
+        logger.info('Producer is ready');
         micro(handler).listen(process.env.PORT || 3000);
       });
 
       producer.on('event.error', err => {
-        console.error('Kafka Producer error', err);
+        logger.error('Kafka Producer error', err);
       });
 
       producer.connect();

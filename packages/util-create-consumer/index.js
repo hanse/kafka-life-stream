@@ -1,4 +1,5 @@
 const Kafka = require('node-rdkafka');
+const logger = require('@hanse/util-logger');
 
 function createConsumer(topics, onMessage) {
   const consumer = new Kafka.KafkaConsumer(
@@ -12,7 +13,7 @@ function createConsumer(topics, onMessage) {
   return () => {
     consumer
       .on('ready', () => {
-        console.log('Consumer is ready');
+        logger.info('Consumer is ready');
         consumer.subscribe(topics);
         consumer.consume();
       })
