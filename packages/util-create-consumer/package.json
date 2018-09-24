@@ -1,4 +1,8 @@
 {
   "name": "@hanse/util-create-consumer",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "node-rdkafka": "2.4.1",
+    "@hanse/util-logger": "0.0.1"
+  }
 }

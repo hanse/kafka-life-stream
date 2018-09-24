@@ -1,4 +1,10 @@
 {
   "name": "@hanse/sbanken-transfers-consumer",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "@hanse/strava-api-client": "0.0.1",
+    "@hanse/sbanken-api-client": "0.0.1",
+    "@hanse/util-create-consumer": "0.0.1",
+    "@hanse/util-logger": "0.0.1"
+  }
 }

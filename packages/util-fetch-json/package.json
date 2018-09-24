@@ -1,4 +1,7 @@
 {
   "name": "@hanse/util-fetch-json",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "isomorphic-fetch": "2.2.1"
+  }
 }

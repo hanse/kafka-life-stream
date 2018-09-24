@@ -1,4 +1,7 @@
 {
   "name": "@hanse/strava-api-client",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "@hanse/util-fetch-json": "0.0.1"
+  }
 }

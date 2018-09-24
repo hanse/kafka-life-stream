@@ -1,4 +1,8 @@
 {
   "name": "@hanse/util-create-http-post-producer",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "micro": "^9.3.3",
+    "node-rdkafka": "2.4.1"
+  }
 }
