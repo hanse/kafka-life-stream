@@ -54,10 +54,12 @@ const start = createConsumer(['strava'], async message => {
     const minutes = Math.floor(elapsed / 60);
     if (minutes > TARGET_ELAPSED_MINUTES) {
       const amount = minutes - TARGET_ELAPSED_MINUTES;
-      console.log(`Attempting to transfer ${amount} from Checking to Savings.`);
+      console.log(
+        `Attempting to transfer ${amount} NOK from Checking to Savings.`
+      );
       await transferFromCheckingsToSavings(amount);
       console.log(
-        'Successfully transferred ${amount} from Checking to Savings.'
+        `Successfully transferred ${amount} NOK from Checking to Savings.`
       );
     }
   } catch (error) {
