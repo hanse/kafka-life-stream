@@ -9,12 +9,11 @@ const logger = require('@hanse/util-logger');
 
 const TARGET_ELAPSED_MINUTES = 20;
 
-async function transferFromCheckingsToSavings(amount) {
-  const customerId = process.env.SBANKEN_USER_ID;
+async function transferFromCheckingToSavings(customerId, amount) {
   const { access_token: accessToken } = await getAccessToken();
   const accounts = await getAccounts(accessToken, customerId);
 
-  const checkingsAccount = accounts.find(
+  const checkingAccount = accounts.find(
     account => account.accountType === 'Standard account'
   );
 
@@ -22,14 +21,14 @@ async function transferFromCheckingsToSavings(amount) {
     account => account.accountType === 'High interest account'
   );
 
-  if (!checkingsAccount || !savingsAccount) {
+  if (!checkingAccount || !savingsAccount) {
     throw new Error(
       'You need both a savings account and a checkings account to do this.'
     );
   }
 
   return transferBetweenAccounts(accessToken, customerId, {
-    fromAccountId: checkingsAccount.accountId,
+    fromAccountId: checkingAccount.accountId,
     toAccountId: savingsAccount.accountId,
     amount,
     message: 'Strava Initiated Payment'
@@ -58,7 +57,7 @@ const start = createConsumer(['strava'], async message => {
       logger.info(
         `Attempting to transfer ${amount} NOK from Checking to Savings.`
       );
-      await transferFromCheckingsToSavings(amount);
+      await transferFromCheckingToSavings(process.env.SBANKEN_USER_ID, amount);
       logger.info(
         `Successfully transferred ${amount} NOK from Checking to Savings.`
       );

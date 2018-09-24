@@ -16,15 +16,18 @@ function isValidRequestOrigin(req) {
   return whitelistedIps.includes(ip);
 }
 
-const producer = createHttpPostProducer(req => {
-  const query = qs.parse(url.parse(req.url).search, {
-    ignoreQueryPrefix: true
-  });
+const producer = createHttpPostProducer({
+  nonPostHandler: req => {
+    const query = qs.parse(url.parse(req.url).search, {
+      ignoreQueryPrefix: true
+    });
 
-  return {
-    'hub.challenge': query['hub.challenge']
-  };
-}, isValidRequestOrigin);
+    return {
+      'hub.challenge': query['hub.challenge']
+    };
+  },
+  isValidRequestOrigin
+});
 
 module.exports = producer.handler;
 
