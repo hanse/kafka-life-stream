@@ -1,8 +1,8 @@
 {
   "name": "@kafka-playground/util-create-consumer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
-    "node-rdkafka": "2.4.1",
-    "@kafka-playground/util-logger": "0.0.1"
+    "@kafka-playground/util-logger": "^0.0.2",
+    "node-rdkafka": "2.4.1"
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "@kafka-playground/strava-api-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
-    "@kafka-playground/util-fetch-json": "0.0.1"
+    "@kafka-playground/util-fetch-json": "^0.0.2"
   }
 }

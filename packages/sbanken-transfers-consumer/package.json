@@ -1,10 +1,10 @@
 {
   "name": "@kafka-playground/sbanken-transfers-consumer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
-    "@kafka-playground/strava-api-client": "0.0.1",
-    "@kafka-playground/sbanken-api-client": "0.0.1",
-    "@kafka-playground/util-create-consumer": "0.0.1",
-    "@kafka-playground/util-logger": "0.0.1"
+    "@kafka-playground/sbanken-api-client": "^0.0.2",
+    "@kafka-playground/strava-api-client": "^0.0.2",
+    "@kafka-playground/util-create-consumer": "^0.0.2",
+    "@kafka-playground/util-logger": "^0.0.2"
   }
 }
