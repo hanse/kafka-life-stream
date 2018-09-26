@@ -1,5 +1,5 @@
 const notifier = require('node-notifier');
-const createConsumer = require('@hanse/util-create-consumer');
+const createConsumer = require('@kafka-playground/util-create-consumer');
 
 const TOPIC = 'topic';
 

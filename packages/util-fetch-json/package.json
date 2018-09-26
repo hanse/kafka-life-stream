@@ -1,5 +1,5 @@
 {
-  "name": "@hanse/util-fetch-json",
+  "name": "@kafka-playground/util-fetch-json",
   "version": "0.0.1",
   "dependencies": {
     "isomorphic-fetch": "2.2.1"

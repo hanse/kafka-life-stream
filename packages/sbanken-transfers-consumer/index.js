@@ -2,10 +2,10 @@ const {
   getAccessToken,
   getAccounts,
   transferBetweenAccounts
-} = require('@hanse/sbanken-api-client');
-const { getActivity } = require('@hanse/strava-api-client');
-const createConsumer = require('@hanse/util-create-consumer');
-const logger = require('@hanse/util-logger');
+} = require('@kafka-playground/sbanken-api-client');
+const { getActivity } = require('@kafka-playground/strava-api-client');
+const createConsumer = require('@kafka-playground/util-create-consumer');
+const logger = require('@kafka-playground/util-logger');
 
 const TARGET_ELAPSED_MINUTES = 20;
 

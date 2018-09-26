@@ -1,5 +1,5 @@
 const micro = require('micro');
-const logger = require('@hanse/util-logger');
+const logger = require('@kafka-playground/util-logger');
 const { buffer, createError } = micro;
 
 const Kafka = require('node-rdkafka');

@@ -1,5 +1,5 @@
 {
-  "name": "@hanse/kafka-playground",
+  "name": "@kafka-playground/kafka-playground",
   "license": "NO",
   "version": "0.0.1",
   "private": true,

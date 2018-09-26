@@ -1,8 +1,8 @@
 {
-  "name": "@hanse/node-notifier-consumer",
+  "name": "@kafka-playground/node-notifier-consumer",
   "version": "0.0.1",
   "dependencies": {
     "node-notifier": "^5.2.1",
-    "@hanse/util-create-consumer": "0.0.1"
+    "@kafka-playground/util-create-consumer": "0.0.1"
   }
 }

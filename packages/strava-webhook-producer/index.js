@@ -1,7 +1,7 @@
 const url = require('url');
 const qs = require('qs');
-const createHttpPostProducer = require('@hanse/util-create-http-post-producer');
-const logger = require('@hanse/util-logger');
+const createHttpPostProducer = require('@kafka-playground/util-create-http-post-producer');
+const logger = require('@kafka-playground/util-logger');
 
 const last = xs => xs[xs.length - 1];
 const trim = x => x.trim();

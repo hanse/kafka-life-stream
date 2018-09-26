@@ -1,8 +1,8 @@
 {
-  "name": "@hanse/console-consumer",
+  "name": "@kafka-playground/console-consumer",
   "version": "0.0.1",
   "dependencies": {
     "meow": "5.0.0",
-    "@hanse/util-create-consumer": "0.0.1"
+    "@kafka-playground/util-create-consumer": "0.0.1"
   }
 }

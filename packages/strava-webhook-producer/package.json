@@ -1,9 +1,9 @@
 {
-  "name": "@hanse/strava-webhook-producer",
+  "name": "@kafka-playground/strava-webhook-producer",
   "version": "0.0.1",
   "dependencies": {
     "qs": "^6.5.2",
-    "@hanse/util-create-http-post-producer": "0.0.1",
-    "@hanse/util-logger": "0.0.1"
+    "@kafka-playground/util-create-http-post-producer": "0.0.1",
+    "@kafka-playground/util-logger": "0.0.1"
   }
 }
