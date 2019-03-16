@@ -32,4 +32,4 @@ async function exploreApi() {
   );
 }
 
-exploreApi();
+exploreApi().catch(error => console.error(error.message));

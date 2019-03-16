@@ -1,6 +1,12 @@
 {
-  "name": "@kafka-playground/strava-api-client",
+  "name": "@hanse/strava-api-client",
   "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
   "dependencies": {
     "@kafka-playground/util-fetch-json": "^0.0.2"
   }

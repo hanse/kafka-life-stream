@@ -1,10 +1,10 @@
-const micro = require('micro');
-const Kafka = require('node-rdkafka');
-const listen = require('test-listen');
-const fetch = require('@kafka-playground/util-fetch-json');
-const app = require('../');
+import micro from 'micro';
+import Kafka from 'node-rdkafka';
+import listen from 'test-listen';
+import fetch from '@hanse/util-fetch-json';
+import app from '../';
 
-const { mockProduce } = Kafka;
+const { mockProduce } = Kafka as any;
 
 const WEBHOOK_EVENT = JSON.stringify({
   aspect_type: 'update',
@@ -19,9 +19,9 @@ const WEBHOOK_EVENT = JSON.stringify({
 });
 
 describe('Strava Producer', () => {
-  process.env.STRAVA_WHITELISTED_IPS = ['1'];
-  const testService = async (method, body) => {
-    const service = micro(app);
+  process.env.STRAVA_WHITELISTED_IPS = '1';
+  const testService = async (method: string, body: any) => {
+    const service = micro(app as any);
     const url = await listen(service);
     const response = await fetch(url + '/strava', {
       method,

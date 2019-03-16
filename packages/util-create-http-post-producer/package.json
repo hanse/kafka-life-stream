@@ -1,8 +1,15 @@
 {
-  "name": "@kafka-playground/util-create-http-post-producer",
+  "name": "@hanse/util-create-http-post-producer",
   "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
   "dependencies": {
+    "@types/micro": "^7.3.3",
     "micro": "^9.3.3",
-    "node-rdkafka": "2.4.1"
+    "node-rdkafka": "^2.5.1"
   }
 }

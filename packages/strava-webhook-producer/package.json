@@ -1,9 +1,16 @@
 {
-  "name": "@kafka-playground/strava-webhook-producer",
+  "name": "@hanse/strava-webhook-producer",
   "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
   "dependencies": {
-    "@kafka-playground/util-create-http-post-producer": "^0.0.2",
-    "@kafka-playground/util-logger": "^0.0.2",
-    "qs": "^6.5.2"
+    "@hanse/util-create-http-post-producer": "0.0.1",
+    "@hanse/util-logger": "0.0.1",
+    "@types/qs": "^6.5.2",
+    "qs": "^6.6.0"
   }
 }

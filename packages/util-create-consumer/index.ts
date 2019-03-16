@@ -1,7 +1,10 @@
-const Kafka = require('node-rdkafka');
-const logger = require('@kafka-playground/util-logger');
+import Kafka, { ConsumerStreamMessage } from 'node-rdkafka';
+import * as logger from '@hanse/util-logger';
 
-function createConsumer(topics, onMessage) {
+function createConsumer(
+  topics: Array<string>,
+  onMessage: (data: ConsumerStreamMessage) => void
+) {
   const consumer = new Kafka.KafkaConsumer(
     {
       'group.id': 'kafka',
@@ -23,4 +26,4 @@ function createConsumer(topics, onMessage) {
   };
 }
 
-module.exports = createConsumer;
+export default createConsumer;

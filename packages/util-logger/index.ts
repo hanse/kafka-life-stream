@@ -1,4 +1,4 @@
-function logMessage(level, message) {
+function logMessage(level: 'info' | 'error', message: any) {
   return JSON.stringify({
     level,
     timestamp: Date.now(),
@@ -6,15 +6,10 @@ function logMessage(level, message) {
   });
 }
 
-function info(message) {
+export function info(message: any) {
   console.info(logMessage('info', message));
 }
 
-function error(message) {
+export function error(message: any) {
   console.error(logMessage('error', message));
 }
-
-module.exports = {
-  info,
-  error
-};

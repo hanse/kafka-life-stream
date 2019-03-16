@@ -1,8 +1,18 @@
 {
-  "name": "@kafka-playground/console-consumer",
+  "name": "@hanse/console-consumer",
   "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
   "dependencies": {
-    "@kafka-playground/util-create-consumer": "^0.0.2",
-    "meow": "5.0.0"
+    "@hanse/util-create-consumer": "0.0.1",
+    "@types/meow": "^5.0.0",
+    "@types/node": "11.11.3",
+    "meow": "5.0.0",
+    "ts-node": "8.0.3",
+    "typescript": "3.3.3333"
   }
 }

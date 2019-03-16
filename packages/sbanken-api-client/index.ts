@@ -1,6 +1,7 @@
-const btoa = require('btoa');
-const qs = require('qs');
-const fetch = require('@kafka-playground/util-fetch-json');
+import btoa from 'btoa';
+import qs from 'qs';
+import fetch from '@hanse/util-fetch-json';
+import { Customer, Account, Transfer } from './types';
 
 const config = {
   clientId: process.env.SBANKEN_APPLICATION_CLIENT_ID,
@@ -15,11 +16,15 @@ function validateConfig() {
   }
 }
 
-function getAccessToken() {
+export function getAccessToken(): Promise<{ access_token: string }> {
   validateConfig();
   const url = 'https://auth.sbanken.no/identityserver/connect/token';
 
-  const basicAuth = btoa(`${config.clientId}:${config.secret}`);
+  const basicAuth = btoa(
+    `${encodeURIComponent(config.clientId)}:${encodeURIComponent(
+      config.secret
+    )}`
+  );
 
   return fetch(url, {
     method: 'POST',
@@ -32,7 +37,10 @@ function getAccessToken() {
   }).then(response => response.jsonData);
 }
 
-function getAccounts(accessToken, customerId) {
+export function getAccounts(
+  accessToken: string,
+  customerId: string
+): Promise<Array<Account>> {
   return fetch(`https://api.sbanken.no/bank/api/v1/Accounts`, {
     headers: {
       Accept: 'application/json',
@@ -42,7 +50,10 @@ function getAccounts(accessToken, customerId) {
   }).then(response => response.jsonData.items);
 }
 
-function getCustomer(accessToken, customerId) {
+export function getCustomer(
+  accessToken: string,
+  customerId: string
+): Promise<Customer> {
   return fetch(`https://api.sbanken.no/customers/api/v1/Customers`, {
     headers: {
       Accept: 'application/json',
@@ -52,7 +63,12 @@ function getCustomer(accessToken, customerId) {
   }).then(response => response.jsonData.item);
 }
 
-function getTransactions(accessToken, customerId, accountId, query) {
+export function getTransactions(
+  accessToken: string,
+  customerId: string,
+  accountId: string,
+  query: { [key: string]: string }
+) {
   const queryString = query ? `?${qs.stringify(query)}` : '';
   return fetch(
     `https://api.sbanken.no/bank/api/v1/Transactions/${accountId}${queryString}`,
@@ -66,7 +82,11 @@ function getTransactions(accessToken, customerId, accountId, query) {
   ).then(response => response.jsonData);
 }
 
-function transferBetweenAccounts(accessToken, customerId, transfer) {
+export function transferBetweenAccounts(
+  accessToken: string,
+  customerId: string,
+  transfer: Transfer
+) {
   const { fromAccountId, toAccountId, message, amount } = transfer;
   if (amount < 1 || amount > 100000000000000000) {
     throw new Error(
@@ -94,11 +114,3 @@ function transferBetweenAccounts(accessToken, customerId, transfer) {
     })
   }).then(response => response.jsonData);
 }
-
-module.exports = {
-  getAccessToken,
-  getAccounts,
-  getCustomer,
-  getTransactions,
-  transferBetweenAccounts
-};

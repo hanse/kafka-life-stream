@@ -4,9 +4,16 @@
 
 ## Life Stream
 
-A stream of events in my life. A bunch of producers will send messages the Kafka Cluster when interesting things (or anything at all) that relate to me occur.
+Collect and act on events occuring in the life of an individual.
 
-Currently only supports [Strava](https://strava.com) Activities, but I imagine a lot more things to be implemented. This also serves as a place to learn new languages such as ReasonML, Elixir or Scala. Maybe I should require each producer to be written in a different language 🤔 But for now it is only JavaScript <3
+## Packages
+
+- [Sbanken API Client](./blob/master/packages/sbanken-api-client/index.ts)
+- [Sbanken Transfers Consumer](./blob/master/packages/sbanken-transfers-consumer/index.ts)
+- [Strava API Client](./blob/master/packages/strava-api-client/index.ts)
+- [Strava Webhook Producer](./blob/master/packages/strava-webhook-producer/index.ts)
+- [Node Notifier Consumer](./blob/master/packages/node-notifier-consumer/index.ts)
+- [Console Consumer](./blob/master/packages/console-consumer/index.ts)
 
 ## Create a `.env` file with a bunch of variables
 

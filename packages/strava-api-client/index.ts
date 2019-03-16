@@ -1,14 +1,11 @@
-const fetch = require('@kafka-playground/util-fetch-json');
+import fetch from '@hanse/util-fetch-json';
+
 const API_URL = 'https://www.strava.com/api/v3';
 
-function getActivity(accessToken, activityId) {
+export function getActivity(accessToken: string, activityId: string) {
   return fetch(`${API_URL}/activities/${activityId}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`
     }
   }).then(response => response.jsonData);
 }
-
-module.exports = {
-  getActivity
-};

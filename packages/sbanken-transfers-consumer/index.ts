@@ -1,15 +1,18 @@
-const {
+import {
   getAccessToken,
   getAccounts,
   transferBetweenAccounts
-} = require('@kafka-playground/sbanken-api-client');
-const { getActivity } = require('@kafka-playground/strava-api-client');
-const createConsumer = require('@kafka-playground/util-create-consumer');
-const logger = require('@kafka-playground/util-logger');
+} from '@hanse/sbanken-api-client';
+import { getActivity } from '@hanse/strava-api-client';
+import createConsumer from '@hanse/util-create-consumer';
+import * as logger from '@hanse/util-logger';
 
 const TARGET_ELAPSED_MINUTES = 20;
 
-async function transferFromCheckingToSavings(customerId, amount) {
+async function transferFromCheckingToSavings(
+  customerId: string,
+  amount: number
+) {
   const { access_token: accessToken } = await getAccessToken();
   const accounts = await getAccounts(accessToken, customerId);
 

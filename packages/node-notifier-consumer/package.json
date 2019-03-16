@@ -1,8 +1,14 @@
 {
-  "name": "@kafka-playground/node-notifier-consumer",
+  "name": "@hanse/node-notifier-consumer",
   "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
   "dependencies": {
-    "@kafka-playground/util-create-consumer": "^0.0.2",
-    "node-notifier": "^5.2.1"
+    "@hanse/util-create-consumer": "0.0.1",
+    "node-notifier": "^5.4.0"
   }
 }

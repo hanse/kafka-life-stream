@@ -1,21 +1,25 @@
 {
-  "name": "@kafka-playground/kafka-playground",
-  "license": "NO",
-  "version": "0.0.1",
+  "name": "@hanse/kafka-playground",
+  "license": "MIT",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --ignore-path .gitignore"
+    "lint": "eslint . --ignore-path .gitignore",
+    "build": "yarn workspaces run build"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "babel-eslint": "9.0.0",
-    "eslint": "5.6.0",
-    "jest": "23.6.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.11",
+    "@types/test-listen": "^1.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.2",
+    "jest": "^24.5.0",
     "lerna": "^3.4.0",
-    "prettier": "^1.14.3",
+    "prettier": "^1.16.4",
     "test-listen": "1.1.0"
   },
   "prettier": {
@@ -41,5 +45,10 @@
     "globals": {
       "__DEV__": true
     }
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-jest": "^24.5.0"
   }
 }

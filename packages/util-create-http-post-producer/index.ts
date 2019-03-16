@@ -1,8 +1,7 @@
-const micro = require('micro');
-const logger = require('@kafka-playground/util-logger');
-const { buffer, createError } = micro;
-
-const Kafka = require('node-rdkafka');
+import micro, { buffer, createError, RequestHandler } from 'micro';
+import { IncomingMessage } from 'http';
+import * as logger from '@hanse/util-logger';
+import Kafka from 'node-rdkafka';
 
 const defaultNonPostHandler = () => {
   throw createError(405, 'Method not supported');
@@ -10,16 +9,24 @@ const defaultNonPostHandler = () => {
 
 const defaultIsValidRequestOrigin = () => true;
 
+type Options = {
+  nonPostHandler: (req: IncomingMessage) => any;
+  isValidRequestOrigin: (req: IncomingMessage) => any;
+};
+
 function createHttpPostProducer({
   nonPostHandler = defaultNonPostHandler,
   isValidRequestOrigin = defaultIsValidRequestOrigin
-}) {
-  const producer = new Kafka.Producer({
-    'metadata.broker.list': 'localhost:9092',
-    dr_cb: true
-  });
+}: Options) {
+  const producer = new Kafka.Producer(
+    {
+      'metadata.broker.list': 'localhost:9092',
+      dr_cb: true
+    },
+    {}
+  );
 
-  const handler = async (req, res) => {
+  const handler: RequestHandler = async (req, res) => {
     if (!isValidRequestOrigin(req)) {
       throw createError(404, 'Nothing here');
     }
@@ -57,8 +64,8 @@ function createHttpPostProducer({
         micro(handler).listen(process.env.PORT || 3000);
       });
 
-      producer.on('event.error', err => {
-        logger.error('Kafka Producer error', err);
+      producer.on('event.error', error => {
+        logger.error({ name: 'Kafka Producer Error', error });
       });
 
       producer.connect();
@@ -66,4 +73,4 @@ function createHttpPostProducer({
   };
 }
 
-module.exports = createHttpPostProducer;
+export default createHttpPostProducer;

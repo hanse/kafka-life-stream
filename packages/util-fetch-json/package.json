@@ -1,6 +1,12 @@
 {
-  "name": "@kafka-playground/util-fetch-json",
+  "name": "@hanse/util-fetch-json",
   "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
   "dependencies": {
     "isomorphic-fetch": "2.2.1"
   }

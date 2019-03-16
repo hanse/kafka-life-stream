@@ -1,6 +1,12 @@
 {
-  "name": "@kafka-playground/sbanken-transfers-consumer",
+  "name": "@hanse/sbanken-transfers-consumer",
   "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
   "dependencies": {
     "@kafka-playground/sbanken-api-client": "^0.0.2",
     "@kafka-playground/strava-api-client": "^0.0.2",
