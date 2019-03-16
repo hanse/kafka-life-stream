@@ -1,5 +1,5 @@
 {
-  "name": "@hanse/util-create-http-post-producer",
+  "name": "@kafka-playground/util-create-http-post-producer",
   "version": "0.0.2",
   "license": "MIT",
   "scripts": {

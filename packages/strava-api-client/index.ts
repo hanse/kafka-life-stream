@@ -1,4 +1,4 @@
-import fetch from '@hanse/util-fetch-json';
+import fetch from '@kafka-playground/util-fetch-json';
 
 const API_URL = 'https://www.strava.com/api/v3';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@hanse/sbanken-api-client",
+  "name": "@kafka-playground/sbanken-api-client",
   "version": "0.0.2",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "main": "dist/index.js",
   "dependencies": {
-    "@hanse/util-fetch-json": "0.0.1",
+    "@kafka-playground/util-fetch-json": "0.0.2",
     "@types/btoa": "^1.2.2",
     "@types/qs": "^6.5.2",
     "btoa": "1.2.1",

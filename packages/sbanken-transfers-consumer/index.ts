@@ -2,10 +2,10 @@ import {
   getAccessToken,
   getAccounts,
   transferBetweenAccounts
-} from '@hanse/sbanken-api-client';
-import { getActivity } from '@hanse/strava-api-client';
-import createConsumer from '@hanse/util-create-consumer';
-import * as logger from '@hanse/util-logger';
+} from '@kafka-playground/sbanken-api-client';
+import { getActivity } from '@kafka-playground/strava-api-client';
+import createConsumer from '@kafka-playground/util-create-consumer';
+import * as logger from '@kafka-playground/util-logger';
 
 const TARGET_ELAPSED_MINUTES = 20;
 

@@ -1,5 +1,5 @@
 {
-  "name": "@hanse/node-notifier-consumer",
+  "name": "@kafka-playground/node-notifier-consumer",
   "version": "0.0.2",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "main": "dist/index.js",
   "dependencies": {
-    "@hanse/util-create-consumer": "0.0.1",
+    "@kafka-playground/util-create-consumer": "0.0.2",
     "node-notifier": "^5.4.0"
   }
 }

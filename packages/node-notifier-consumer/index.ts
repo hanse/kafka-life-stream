@@ -1,5 +1,5 @@
 import notifier from 'node-notifier';
-import createConsumer from '@hanse/util-create-consumer';
+import createConsumer from '@kafka-playground/util-create-consumer';
 
 const TOPIC = 'topic';
 

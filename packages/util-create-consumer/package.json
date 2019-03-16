@@ -1,5 +1,5 @@
 {
-  "name": "@hanse/util-create-consumer",
+  "name": "@kafka-playground/util-create-consumer",
   "version": "0.0.2",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "main": "dist/index.js",
   "dependencies": {
-    "@hanse/util-logger": "0.0.1",
+    "@kafka-playground/util-logger": "0.0.2",
     "@types/node": "11.11.3",
     "@types/node-notifier": "^5.4.0",
     "node-rdkafka": "^2.5.1",

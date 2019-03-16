@@ -1,6 +1,6 @@
 import btoa from 'btoa';
 import qs from 'qs';
-import fetch from '@hanse/util-fetch-json';
+import fetch from '@kafka-playground/util-fetch-json';
 import { Customer, Account, Transfer } from './types';
 
 const config = {

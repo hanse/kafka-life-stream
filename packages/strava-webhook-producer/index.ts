@@ -1,7 +1,7 @@
 import url from 'url';
 import qs from 'qs';
-import createHttpPostProducer from '@hanse/util-create-http-post-producer';
-import * as logger from '@hanse/util-logger';
+import createHttpPostProducer from '@kafka-playground/util-create-http-post-producer';
+import * as logger from '@kafka-playground/util-logger';
 import { IncomingMessage } from 'http';
 
 console.log(logger);

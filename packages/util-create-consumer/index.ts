@@ -1,5 +1,5 @@
 import Kafka, { ConsumerStreamMessage } from 'node-rdkafka';
-import * as logger from '@hanse/util-logger';
+import * as logger from '@kafka-playground/util-logger';
 
 function createConsumer(
   topics: Array<string>,

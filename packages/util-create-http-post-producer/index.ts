@@ -1,6 +1,6 @@
 import micro, { buffer, createError, RequestHandler } from 'micro';
 import { IncomingMessage } from 'http';
-import * as logger from '@hanse/util-logger';
+import * as logger from '@kafka-playground/util-logger';
 import Kafka from 'node-rdkafka';
 
 const defaultNonPostHandler = () => {

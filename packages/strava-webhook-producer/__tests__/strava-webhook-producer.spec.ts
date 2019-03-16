@@ -1,7 +1,7 @@
 import micro from 'micro';
 import Kafka from 'node-rdkafka';
 import listen from 'test-listen';
-import fetch from '@hanse/util-fetch-json';
+import fetch from '@kafka-playground/util-fetch-json';
 import app from '../';
 
 const { mockProduce } = Kafka as any;
