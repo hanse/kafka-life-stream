@@ -1,6 +1,6 @@
 {
   "name": "@kafka-playground/util-create-consumer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "start": "ts-node index.ts",
@@ -12,7 +12,7 @@
   ],
   "main": "dist/index.js",
   "dependencies": {
-    "@kafka-playground/util-logger": "^1.0.0",
+    "@kafka-playground/util-logger": "^1.0.1",
     "@types/node": "11.11.3",
     "@types/node-notifier": "^5.4.0",
     "node-rdkafka": "^2.5.1",
