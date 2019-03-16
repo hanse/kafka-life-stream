@@ -5,8 +5,11 @@
   "scripts": {
     "start": "ts-node index.ts",
     "build": "tsc",
-    "build:docker": "docker build -t hanse/sbanken-transfers-consumer ."
+    "prepublishOnly": "yarn build"
   },
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "dependencies": {
     "@kafka-playground/sbanken-api-client": "^1.0.0",

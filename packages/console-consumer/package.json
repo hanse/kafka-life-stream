@@ -4,8 +4,12 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "yarn build"
   },
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "dependencies": {
     "@kafka-playground/util-create-consumer": "^1.0.0",
