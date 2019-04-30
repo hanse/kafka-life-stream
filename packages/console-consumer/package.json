@@ -14,9 +14,9 @@
   "dependencies": {
     "@kafka-playground/util-create-consumer": "^1.0.2",
     "@types/meow": "^5.0.0",
-    "@types/node": "11.11.3",
+    "@types/node": "11.13.8",
     "meow": "5.0.0",
-    "ts-node": "8.0.3",
-    "typescript": "3.3.3333"
+    "ts-node": "8.1.0",
+    "typescript": "3.4.5"
   }
 }

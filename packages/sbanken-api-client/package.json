@@ -13,9 +13,9 @@
   "main": "dist/index.js",
   "dependencies": {
     "@kafka-playground/util-fetch-json": "^1.0.1",
-    "@types/btoa": "^1.2.2",
-    "@types/qs": "^6.5.2",
+    "@types/btoa": "^1.2.3",
+    "@types/qs": "^6.5.3",
     "btoa": "1.2.1",
-    "qs": "^6.6.0"
+    "qs": "^6.7.0"
   }
 }
