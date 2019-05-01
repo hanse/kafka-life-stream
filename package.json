@@ -27,25 +27,6 @@
     "printWidth": 80,
     "bracketSpacing": true
   },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaVersion": 6
-    },
-    "rules": {
-      "no-undef": 2,
-      "no-unused-vars": 2
-    },
-    "env": {
-      "node": true,
-      "es6": true,
-      "jest": true,
-      "browser": true
-    },
-    "globals": {
-      "__DEV__": true
-    }
-  },
   "dependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",

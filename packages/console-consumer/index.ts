@@ -7,6 +7,7 @@ const topics = cli.input[0] || 'topic';
 const debug = !!cli.flags.debug;
 
 const start = createConsumer(
+  'console-logger',
   topics.split(',').map(topic => topic.trim()),
   data => {
     const value = data.value.toString();

@@ -1,11 +1,12 @@
 import notifier from 'node-notifier';
 import createConsumer from '@kafka-playground/util-create-consumer';
 
-const TOPIC = 'topic';
+const argv = process.argv.slice(2);
+const topics = (argv[0] || 'topic').split(',');
 
-const start = createConsumer([TOPIC], message => {
+const start = createConsumer('node-notifier', topics, message => {
   notifier.notify({
-    title: TOPIC,
+    title: 'Kafka',
     message: message.value.toString()
   });
 });

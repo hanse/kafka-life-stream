@@ -40,7 +40,7 @@ async function transferFromCheckingToSavings(
 
 // You probably don't want to let this consumer
 // read from the beginning when you start it hahah
-const start = createConsumer(['strava'], async message => {
+const start = createConsumer('sbanken-transfer', ['strava'], async message => {
   const event = JSON.parse(message.value.toString());
   if (event.aspect_type !== 'create') {
     return;

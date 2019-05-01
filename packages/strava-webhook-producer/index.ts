@@ -4,8 +4,6 @@ import createHttpPostProducer from '@kafka-playground/util-create-http-post-prod
 import * as logger from '@kafka-playground/util-logger';
 import { IncomingMessage } from 'http';
 
-console.log(logger);
-
 const last = <T>(xs: Array<T>) => xs[xs.length - 1];
 const trim = (x: string) => x.trim();
 
