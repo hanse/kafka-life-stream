@@ -4,7 +4,11 @@ import {
   transferBetweenAccounts
 } from '@kafka-playground/sbanken-api-client';
 import { getActivity } from '@kafka-playground/strava-api-client';
-import createConsumer from '@kafka-playground/util-create-consumer';
+import {
+  createConsumer,
+  createProducer,
+  getEventLog
+} from '@kafka-playground/core';
 import * as logger from '@kafka-playground/util-logger';
 
 const TARGET_ELAPSED_MINUTES = 20;
@@ -38,36 +42,62 @@ async function transferFromCheckingToSavings(
   });
 }
 
-// You probably don't want to let this consumer
-// read from the beginning when you start it hahah
-const start = createConsumer('sbanken-transfer', ['strava'], async message => {
-  const event = JSON.parse(message.value.toString());
-  if (event.aspect_type !== 'create') {
-    return;
-  }
-
-  const activityId = event.object_id;
+async function main() {
   try {
-    const activity = await getActivity(
-      process.env.STRAVA_ACCESS_TOKEN,
-      activityId
+    const eventLog = await getEventLog();
+    // You probably don't want to let this consumer
+    // read from the beginning when you start it hahah
+    const start = createConsumer(
+      'sbanken-transfer',
+      ['strava'],
+      async message => {
+        const event = JSON.parse(message.value.toString());
+        if (event.aspect_type !== 'create') {
+          return;
+        }
+
+        const activityId = event.object_id;
+        try {
+          const activity = await getActivity(
+            process.env.STRAVA_ACCESS_TOKEN,
+            activityId
+          );
+          const { elapsed_time: elapsed } = activity;
+
+          const minutes = Math.floor(elapsed / 60);
+          if (minutes > TARGET_ELAPSED_MINUTES) {
+            const amount = minutes - TARGET_ELAPSED_MINUTES;
+            logger.info(
+              `Attempting to transfer ${amount} NOK from Checking to Savings.`
+            );
+
+            const response = await transferFromCheckingToSavings(
+              process.env.SBANKEN_USER_ID,
+              amount
+            );
+
+            logger.info(
+              `Successfully transferred ${amount} NOK from Checking to Savings.`
+            );
+
+            eventLog.dispatch({
+              type: 'BANK_TRANSFER_FINISHED',
+              payload: {
+                amount,
+                response
+              }
+            });
+          }
+        } catch (error) {
+          logger.error(error);
+        }
+      }
     );
-    const { elapsed_time: elapsed } = activity;
 
-    const minutes = Math.floor(elapsed / 60);
-    if (minutes > TARGET_ELAPSED_MINUTES) {
-      const amount = minutes - TARGET_ELAPSED_MINUTES;
-      logger.info(
-        `Attempting to transfer ${amount} NOK from Checking to Savings.`
-      );
-      await transferFromCheckingToSavings(process.env.SBANKEN_USER_ID, amount);
-      logger.info(
-        `Successfully transferred ${amount} NOK from Checking to Savings.`
-      );
-    }
+    start();
   } catch (error) {
-    logger.error(error);
+    console.error(error);
   }
-});
+}
 
-start();
+main();

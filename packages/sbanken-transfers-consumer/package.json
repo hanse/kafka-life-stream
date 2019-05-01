@@ -14,7 +14,7 @@
   "dependencies": {
     "@kafka-playground/sbanken-api-client": "^1.0.1",
     "@kafka-playground/strava-api-client": "^1.0.1",
-    "@kafka-playground/util-create-consumer": "^1.0.2",
+    "@kafka-playground/core": "^1.0.2",
     "@kafka-playground/util-logger": "^1.0.2"
   }
 }

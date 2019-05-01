@@ -1,5 +1,5 @@
 import meow from 'meow';
-import createConsumer from '@kafka-playground/util-create-consumer';
+import { createConsumer } from '@kafka-playground/core';
 
 const cli = meow('console-consumer topic1,topic2 [--debug]');
 

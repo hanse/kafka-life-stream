@@ -5331,7 +5331,7 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
-node-rdkafka@^2.6.1:
+node-rdkafka@2.6.1, node-rdkafka@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-rdkafka/-/node-rdkafka-2.6.1.tgz#87171ad5f45d8405dcc4d987b7b606c8a763344b"
   integrity sha512-mBRq7/7hgnRmbfX8TLPK0JVQYxu/kkuHVT4W7vLXc6wQoV5JfInpV0hWtkGIBjNzFyYSk0faJDIqlDQ2k9vy9Q==
